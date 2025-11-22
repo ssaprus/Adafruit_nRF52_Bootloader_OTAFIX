@@ -96,5 +96,4 @@
 #define UF2_BOARD_ID            "nRF52840-FoBEF1101-rev1a"
 #define UF2_INDEX_URL           "https://docs.fobestudio.com/product/f1101"
 
-
 #endif /* _FOBE_QUILL_NRF52840_MESH_H_ */
