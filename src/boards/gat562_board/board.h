@@ -42,8 +42,8 @@
 /* BUTTON
  *------------------------------------------------------------------*/
 #define BUTTONS_NUMBER        2
-#define BUTTON_1              _PINNUM(0, 8)	// change default 0.0 to 0.8, add by Michael. This pin is not connected on 4631. 
-#define BUTTON_2              _PINNUM(0, 8)	// change default 0.0 to 0.8, add by Michael. This pin is not connected on 4631. 
+#define BUTTON_1              _PINNUM(0, 9)
+#define BUTTON_2              _PINNUM(0, 9)
 #define BUTTON_PULL           NRF_GPIO_PIN_PULLUP
 
 //--------------------------------------------------------------------+
