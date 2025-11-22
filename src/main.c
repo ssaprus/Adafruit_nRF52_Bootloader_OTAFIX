@@ -306,6 +306,7 @@ static void check_dfu_mode(void) {
       if (ssd1306_is_enabled()) {
         ssd1306_clear();
         ssd1306_draw_string_centered(28, "BLE DFU");
+        ssd1306_draw_string_centered(38, DEVICE_NAME);
         ssd1306_display();
       }
       #endif
