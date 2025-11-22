@@ -4,6 +4,8 @@
 The main of this fork is to change the behaviour of the bootloader when a DFU fails, along with some other patches that make it work on nRF52840. 
 When this bootloader *detects* an invalid application firmware after a DFU update it will boot to OTA mode instead of UF2/CDC mode. This isn't totally bulletproof (sometimes the device will just hang at the end of DFU) but if your device is difficult to access then this is a lot better than the default behaviour.
 
+> OLED CODE ARE COPIED FROM https://github.com/whywilson/Adafruit_nRF52_Bootloader_OTAFIX
+
 ---
 #### Boards supported:
 - Heltec Automation Mesh Node T114 / HT-nRF5262
