@@ -62,6 +62,10 @@
 
 #include "boards.h"
 
+#ifdef BOARD_HAS_SSD1306
+#include "ssd1306_drv.h"
+#endif
+
 #include "pstorage_platform.h"
 #include "nrf_mbr.h"
 #include "pstorage.h"
@@ -172,6 +176,12 @@ int main(void) {
 
   board_init();
   bootloader_init();
+
+  // Initialize SSD1306 display (but don't show anything yet)
+#ifdef BOARD_HAS_SSD1306
+  ssd1306_init();
+#endif
+
   PRINTF("Bootloader Start\r\n");
   led_state(STATE_BOOTLOADER_STARTED);
 
@@ -292,11 +302,25 @@ static void check_dfu_mode(void) {
         board_display_init();
         screen_draw_ble();
       #endif
+      #ifdef BOARD_HAS_SSD1306
+      if (ssd1306_is_enabled()) {
+        ssd1306_clear();
+        ssd1306_draw_string_centered(28, "BLE DFU");
+        ssd1306_display();
+      }
+      #endif
       led_state(STATE_BLE_DISCONNECTED);
       if (!_sd_inited) mbr_init_sd();
       _sd_inited = true;
       ble_stack_init();
     } else {
+      #ifdef BOARD_HAS_SSD1306
+      if (ssd1306_is_enabled()) {
+        ssd1306_clear();
+        ssd1306_draw_string_centered(28, "USB DFU");
+        ssd1306_display();
+      }
+      #endif
       led_state(STATE_USB_UNMOUNTED);
       usb_init(serial_only_dfu);
     }

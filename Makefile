@@ -135,6 +135,9 @@ C_SRC += \
   src/main.c \
   src/screen.c \
   src/images.c \
+  src/ssd1306_drv.c \
+  src/ssd1306_comm.c \
+  src/font_8x8.c \
 
 # all files in boards
 C_SRC += src/boards/boards.c
@@ -142,6 +145,7 @@ C_SRC += src/boards/boards.c
 # nrfx
 C_SRC += $(NRFX_PATH)/drivers/src/nrfx_power.c
 C_SRC += $(NRFX_PATH)/drivers/src/nrfx_nvmc.c
+C_SRC += $(NRFX_PATH)/drivers/src/nrfx_twi.c
 C_SRC += $(NRFX_PATH)/mdk/system_$(MCU_SUB_VARIANT).c
 
 # SDK 11 files: serial + OTA DFU
