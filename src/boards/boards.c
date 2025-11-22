@@ -168,6 +168,15 @@ void board_teardown(void) {
   // make sure all pins are back in reset state
   // NUMBER_OF_PINS is defined in nrf_gpio.h
   for (int i = 0; i < NUMBER_OF_PINS; ++i) {
+#ifdef BOARD_HAS_SSD1306
+    // For SSD1306 boards, we need to carefully handle I2C pins
+    // Set I2C pins to output high to ensure clean state for next initialization
+    if (i == I2C_SDA_PIN || i == I2C_SCL_PIN) {
+      nrf_gpio_cfg_output(i);
+      nrf_gpio_pin_set(i);  // Pull both SDA and SCL high for clean state
+      continue;
+    }
+#endif
     nrf_gpio_cfg_default(i);
   }
 
